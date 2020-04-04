@@ -2,17 +2,37 @@ let MongoClient=require("mongodb").MongoClient;
 let config=require("./config.js");
 
 class Db{
+
+
     constructor(){
-        //初始化的时候连接数据库
         this.connect();
-        this.dbClient=""; //放入db对象
+        this.dbClient="";
+    }
+
+    static getInstance=()=>{
+        //如果不存在Db的instance 那么新建一个实例
+        if(!(Db.instance)){
+            Db.instance=new Db();
+        }
+        return Db.instance;
+
+        //为什么这样写不行？？？？
+        // if(!Db.instance){
+        //     Db.instance=new Db();
+        // }else{
+        //     return Db.instance;
+        // }
+
+        //为什么这样写也不行？？？？？？
+        // if(Db.instance){
+        //     return Db.instance;
+        // }
+        //  Db.instance=new Db();
+
     }
 
 
     connect=()=>{
-
-        //如果dbClient没有值，那么就把连接的db对象给dbClient
-        //解决数据库多次连接的问题
         if(!this.dbClient){
             return new Promise((resolve,reject)=>{
                 MongoClient.connect(config.dbUrl,{ useUnifiedTopology:true },(err,client)=>{
@@ -26,7 +46,6 @@ class Db{
                 })
             });
         }else{
-            //第二次调用connect方法的时候直接返回
             resolve(this.dbClient);
         }
 
@@ -59,22 +78,19 @@ class Db{
 
 
 
-let test=new Db();
-test.find("test",{}).then((data)=>{
+//把代码改成单例模式了之后。想多次实例化的时候就不是使用new了。而是是使用静态方法。
+//ctrl 加 alt 加 m 停止运行代码
+
+let test1=Db.getInstance();
+let test2=Db.getInstance();
+let test3=Db.getInstance();
+
+test1.find("test",{}).then((data)=>{
     console.log(data);
 });
-
-
-
-test.find("test",{}).then((data)=>{
+test2.find("test",{}).then((data)=>{
     console.log(data);
 });
-
-
-
-//这样写就不会每次调用find方法都连接一次数据库了。but这段代码还是有问题。
-//多次实例话的时候还是要，多次连接数据库。所以要使用单例模式。
-
-let test2=new Db();
-
-let test3=new Db();
+test3.find("test",{}).then((data)=>{
+    console.log(data);
+});
