@@ -8,6 +8,7 @@ class Db{
     }
 
     //连接数据库并返回数据库对象。
+    //必须加这个参数{ useUnifiedTopology:true }，不太懂为什么
     connect=()=>{
         return new Promise((resolve,reject)=>{
             MongoClient.connect(config.dbUrl,{ useUnifiedTopology:true },(err,client)=>{
