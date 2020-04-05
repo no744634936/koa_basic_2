@@ -1,5 +1,7 @@
 
 let MongoClient=require("mongodb").MongoClient;
+//根据id来查询数据的时候要使用这个
+let ObjectId=require("mongodb").ObjectID;
 let config=require("./config.js");
 
 class Db{
@@ -56,7 +58,7 @@ class Db{
     update=(collectionName,json1,json2)=>{
         return new Promise(async(resolve,reject)=>{
             let db=await this.connect();
-            db.collection(collectionName).update(json1,{$set:json2},(err,result)=>{
+            db.collection(collectionName).updateOne(json1,{$set:json2},(err,result)=>{
                 if(err){
                     reject(err);
                 }else{
@@ -93,6 +95,11 @@ class Db{
                 }
             })
         });
+    }
+
+    getObjectId=(id)=>{
+        //mongodb里面查询_id时，需要把字符串转换成object
+        return ObjectId(id); 
     }
 
 }

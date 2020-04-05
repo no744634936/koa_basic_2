@@ -9,12 +9,30 @@
 
 </head>
 <body>
-    <h2 class="title">这是一个koa-art-template</h2>
+<h2 class="title">将数据库里的数据显示出来</h2>
 
+<a href="/add">add a new user</a>
+<table>
+    <tr>
+        <th>username</th>
+        <th>age</th>
+        <th>sex</th>
+        <th>operation</th>
+    </tr>
+    {{each list}}
+        <tr>
 
-<h2>绑定数据</h2>
-
-    <%=list.name%>
+            <td>{{$value.username}}</td>
+            <td>{{$value.age}}</td>
+            <td>{{$value.sex}}</td>
+            <td><a href="/delete?id={{@$value._id}}">delete</a> <a href="/edit?id={{@$value._id}}">edit</a></td>
+            
+            <!-- 循环数据的时候记得加上$符号 -->
+            <!-- 如果不加＠的话，id会带引号。 -->
+            <!-- <td><a href="">delete</a> <a href="/edit?{{$value._id}}">edit</a></td> -->
+        </tr>
+    {{/each}}
+</table>
 
 </body>
 </html>
