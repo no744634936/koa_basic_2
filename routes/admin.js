@@ -1,31 +1,27 @@
-
+/**
+ * Created by Administrator on 2018/3/20 0020.
+ */
 var router=require('koa-router')();
 
-router.get('/',(ctx)=>{
+var user=require('./admin/user.js');
 
+var focus=require('./admin/focus.js');
 
+var newscate=require('./admin/newscate.js');
+
+//配置admin的子路由  层级路由
+router.get('/',async (ctx)=>{
 
     ctx.body='后台管理系统首页'
 
 
 })
 
-router.get('/user',(ctx)=>{
+router.use('/user',user);
+
+router.use('/focus',focus);
+
+router.use('/newscate',newscate);
 
 
-
-    ctx.body='用户管理'
-})
-
-router.get('/focus',(ctx)=>{
-
-    ctx.body='轮播图管理'
-})
-router.get('/news',(ctx)=>{
-
-    ctx.body='新闻管理'
-})
-
-
- /*在模块里面暴露路由并且启动路由*/
 module.exports=router.routes();

@@ -1,31 +1,34 @@
 
-const Koa=require('koa');
-const router=require('koa-router')();
+const Koa=require('koa'),
+
+     router=require('koa-router')(),
+    render = require('koa-art-template'),
+    path=require('path'); //
 
 //引入子模块
 
 var admin=require('./routes/admin.js');
 var api=require('./routes/api.js');
+var index=require('./routes/index.js');
 
 var app=new Koa();
+//配置koa-art-template 模板引擎
+render(app, {
+    root: path.join(__dirname, 'views'),
+    extname: '.html',
+    debug: process.env.NODE_ENV !== 'production'
+});
 
 //配置路由
-router.get('/',(ctx)=>{
+router.use(index);
 
-    ctx.body='这是一个首页'
-})
-
-
-//当用户输入http://localhost:3000/admin时，因为有admin，自动匹配/
-//当用户输入http://localhost:3000/admin/user时，因为有admin 自动匹配admin/user路由。
 router.use('/admin',admin);
 
-router.use('/api',api);  
-
-
+router.use('/api',api);
 
 //启动路由
 app.use(router.routes()).use(router.allowedMethods());
+
 app.listen(3000);
 
 

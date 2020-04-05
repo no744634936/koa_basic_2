@@ -1,3 +1,6 @@
+/**
+ * Created by Administrator on 2018/3/20 0020.
+ */
 
 var router=require('koa-router')();
 
@@ -16,6 +19,4 @@ router.get('/focus',(ctx)=>{
     ctx.body={"title":"这是一个轮播图的api"};
 })
 
-
- /*在模块里面暴露路由并且启动路由*/
 module.exports=router.routes();
