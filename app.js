@@ -31,9 +31,36 @@ router.get('/news',async (ctx)=>{
     var result=await DB.find('test',{});
     console.timeEnd('start');
 
-    
     ctx.body="这是一个新闻页面";
 })
+
+
+router.get('/add',async (ctx)=>{
+
+    let insert_promise=await DB.insert("test",{"username":"zhanghaifeng","age":27,"sex":"男","status":1});
+    console.log(insert_promise.result); //如果增加成功会返回这个{ n: 1, ok: 1 }
+
+    ctx.body="这是用来添加数据到数据库的页面";
+})
+
+
+router.get('/update',async (ctx)=>{
+
+    let update_promise=await DB.update("test",{"username":"zhanghaifeng"},{"username":"赵飞燕"})
+    console.log(update_promise.result);
+    ctx.body="这是用来更新数据库里数据的页面";
+})
+
+
+router.get('/delete',async (ctx)=>{
+
+    let remove_promise=await DB.remove("test",{"username":"zhanghaifeng"})
+    console.log(remove_promise.result);
+    ctx.body="这是用来散出数据库里数据的页面";
+})
+
+
+
 app.use(router.routes());   /*启动路由*/
 app.use(router.allowedMethods());
 app.listen(3000, () => {

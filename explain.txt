@@ -1,1 +1,3 @@
 module/db.js把instance暴露出去。然后app.js文件引用这个instance。
+
+完善了db.js里的方法。并在app.js里面调用。

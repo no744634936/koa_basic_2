@@ -52,23 +52,58 @@ class Db{
         })
     }
 
-    update=async()=>{
-
+    //json1 需要更新的对象， json2更新的信息
+    update=(collectionName,json1,json2)=>{
+        return new Promise(async(resolve,reject)=>{
+            let db=await this.connect();
+            db.collection(collectionName).update(json1,{$set:json2},(err,result)=>{
+                if(err){
+                    reject(err);
+                }else{
+                    resolve(result);
+                }
+            })
+        });
     }
     
-    insert=async()=>{
 
+    insert=(collectionName,json)=>{
+        return new Promise(async(resolve,reject)=>{
+            let db=await this.connect();
+            db.collection(collectionName).insertOne(json,(err,result)=>{
+                if(err){
+                    reject(err);
+                    return
+                }else{
+                    resolve(result);
+                }
+            })
+        })
+    }
+
+    //json就是条件。要满足什么条件才会被删除
+    remove=(collectionName,json)=>{
+        return new Promise(async(resolve,reject)=>{
+            let db=await this.connect();
+            db.collection(collectionName).removeOne(json,(err,result)=>{
+                if(err){
+                    reject(err);
+                }else{
+                    resolve(result);
+                }
+            })
+        });
     }
 
 }
 
 
 
-let test1=Db.getInstance();
+// let test1=Db.getInstance();
 
-test1.find("test",{}).then((data)=>{
-    console.log(data);
-});
+// test1.find("test",{}).then((data)=>{
+//     console.log(data);
+// });
 
 //test1=Db.getInstance();
 
