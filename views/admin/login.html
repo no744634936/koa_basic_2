@@ -4,17 +4,15 @@
 		<meta charset="utf-8" />
 		<title>后台管理系统登录</title>		
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
 		<!-- basic styles -->
-
-		<link href="{{__HOST__}}/admin/css/bootstrap.min.css" rel="stylesheet" />
-		<link rel="stylesheet" href="{{__HOST__}}/admin/css/font-awesome.min.css" />
-
+		<link href="{{__ROOT__}}/admin/css/bootstrap.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="{{__ROOT__}}/admin/css/font-awesome.min.css" />
 		<!-- fonts -->
-		<link rel="stylesheet" href="{{__HOST__}}/admin/css/ace.min.css" />
-		<link rel="stylesheet" href="{{__HOST__}}/admin/css/ace-rtl.min.css" />
+		<link rel="stylesheet" href="{{__ROOT__}}/admin/css/ace.min.css" />
+		<link rel="stylesheet" href="{{__ROOT__}}/admin/css/ace-rtl.min.css" />
 		
 		<style type="text/css">
+
 			.login-layout{
 				background: #428bca;
 			}
@@ -30,6 +28,12 @@
 			.header{
 				margin-top:0px;
 				padding-bottom: 12px;
+			}
+
+			#verify_img{
+				position: relative;
+				left: 10px;
+				bottom: 0px;
 			}
 		</style>
 	
@@ -54,18 +58,18 @@
 
 											<div class="space-6"></div>
 
-											<form>
+											<form action="{{__ROOT__}}/admin/login/doLogin" method="post">
 												<fieldset>
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="text" class="form-control" placeholder="用户名" />
+															<input type="text" class="form-control" name="username" placeholder="用户名" />
 															<i class="icon-user"></i>
 														</span>
 													</label>
 
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="password" class="form-control" placeholder="密码" />
+															<input type="password" class="form-control"  name="password" placeholder="密码" />
 															<i class="icon-lock"></i>
 														</span>
 													</label>
@@ -73,7 +77,7 @@
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
 															<input type="password" class="form-control" placeholder="验证吗" style="width:200px;float:left;" />
-															<img style="float:right;" src="https://www.itying.com/koa/admin_express.php?m=Public&a=verify&rand=1521453067" alt="">
+														<img id="verify_img" src="{{__ROOT__}}/admin/login/code" title="看不清？点击刷新" onclick="javascript:this.src='{{__ROOT__}}/admin/login/code?mt='+Math.random()" />
 														</span>
 													</label>
 
@@ -85,7 +89,7 @@
 															<span class="lbl"> Remember Me</span>
 														</label>
 
-														<button type="button" class="width-35 pull-right btn btn-sm btn-primary">
+														<button type="sub" class="width-35 pull-right btn btn-sm btn-primary">
 															<i class="icon-key"></i>
 															登录
 														</button>
@@ -110,8 +114,6 @@
 			</div>
 		</div><!-- /.main-container -->
 
-		<!-- basic scripts -->
 
-	
 </body>
 </html>

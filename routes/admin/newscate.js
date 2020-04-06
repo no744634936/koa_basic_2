@@ -8,25 +8,25 @@ var router=require('koa-router')();
 
 router.get('/',async (ctx)=>{
 
-    ctx.render('admin/user/index');
+    ctx.body='新闻分类首页';
 
 })
 
 router.get('/add',async (ctx)=>{
 
-    await ctx.render('admin/user/add');
+    ctx.body='增加新闻分类';
 
 })
 
 
 router.get('/edit',async (ctx)=>{
 
-    await ctx.render('admin/user/edit');
+    ctx.body='编辑新闻分类';
 
 })
 router.get('/delete',async (ctx)=>{
 
-    ctx.body='编辑用户';
+    ctx.body='编辑新闻分类';
 
 })
 

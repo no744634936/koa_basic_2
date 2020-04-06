@@ -13,8 +13,11 @@
     "koa-art-template": "^1.1.1",
     "koa-bodyparser": "^4.3.0",
     "koa-router": "^8.0.8",
+    "koa-session": "^5.13.1",
     "koa-static": "^5.0.0",
-    "mongodb": "^3.5.5"
+    "md5": "^2.2.1",
+    "mongodb": "^3.5.5",
+    "svg-captcha": "^1.4.0"
   },
   "repository": {
     "type": "git",

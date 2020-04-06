@@ -1,38 +1,34 @@
 /**
  * Created by Administrator on 2018/3/20 0020.
  */
-var router = require('koa-router')();
-//引入模块
-
-var login=require('./admin/login.js');
+var router=require('koa-router')();
 
 var user=require('./admin/user.js');
 
-//配置中间件 获取url的地址
+var focus=require('./admin/focus.js');
+
+var newscate=require('./admin/newscate.js');
+
+var login=require('./admin/login.js');
 
 
 router.use(async (ctx,next)=>{
-    //console.log(ctx.request.header.host);
 
-    //匹配到这个中间件之后，我们给全局设定一个__HOST__ 变量。view里面的__HOST__就是在这里设置的。
-    //然后 await  next(); 让模板引擎使用。 为什么要这样写？
-    ctx.state.__HOST__='http://'+ctx.request.header.host;
-
-    await  next();
-
+    ctx.state.__ROOT__='http://'+ctx.header.host;
+    await next();
 })
 
-
-router.get('/',async (ctx)=>{
-
-    ctx.body="后台管理";
-
+//配置admin的子路由  层级路由
+router.get('/',(ctx)=>{
+    ctx.render('admin/index');
 })
+
+router.use('/user',user);
+router.use('/focus',focus);
 
 router.use('/login',login);
-router.use('/user',user);
 
-
+router.use('/newscate',newscate);
 
 
 module.exports=router.routes();
