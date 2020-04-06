@@ -1,0 +1,20 @@
+1，配置 首页(index)，api,admin三大模块的路由
+
+
+http://localhost:3000/api
+
+
+http://localhost:3000/admin
+  --http://localhost:3000/admin/user
+  --http://localhost:3000/admin/login
+  --http://localhost:3000/admin/user/add
+
+
+
+http://localhost:3000/
+
+
+2,public,veiws,也是分为了前台，后台(admin)，api三个模块
+
+
+http://localhost:3000/admin/login
