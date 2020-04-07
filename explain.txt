@@ -1,24 +1,11 @@
 
-/*
- http://aui.github.io/art-template/koa/
+ koa-static 静态资源中间件  静态web服务
 
- 1、
+1.cnpm install  koa-static --save
 
- npm install --save art-template
- npm install --save koa-art-template
+2.const static = require('koa-static')
 
+3.配置中间件
 
- 2、const render = require('koa-art-template');
+ app.use(__dirname+static('static'))
 
-
- 3、
-
- render(app, {
-     root: path.join(__dirname, 'view'),   视图的位置
-     extname: '.html', 后缀名
-     debug: process.env.NODE_ENV !== 'production'  是否开启调试模式
-
- });
-4、
- await ctx.render('user');
-* */
