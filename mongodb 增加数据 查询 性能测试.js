@@ -22,7 +22,7 @@ nodejs操作mongodb数据库
 
  4.nodejs连接数据库
 
- MongoClient.connect(url,function(err,client){
+ MongoClient.connect(url,{ useUnifiedTopology:true },function(err,client){
 
         const db = client.db(dbName);  数据库db对象
 
