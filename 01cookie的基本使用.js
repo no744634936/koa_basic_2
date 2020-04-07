@@ -52,7 +52,7 @@ router.get('/',async (ctx)=>{
     ctx.cookies.set('userinfo','zhangsan2222',{
         maxAge:60*1000*60,
 
-       // path:'/news',  /*配置可以访问的页面*/
+       // path:'/news',  /*配置可以访问的页面,在这个page才能看见cookies*/
        //expires:'2020-04-5',
        //domain:'.baidu.com'  /*正常情况不要设置 默认就是当前域下面的所有页面都可以方法*/
         /*
@@ -70,7 +70,6 @@ router.get('/',async (ctx)=>{
     }
     await ctx.render('index',{
         list:list
-
     });
 })
 
