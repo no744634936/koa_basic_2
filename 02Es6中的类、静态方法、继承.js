@@ -68,7 +68,7 @@ class Person{
         console.log('这是es6里面的静态方法');
     }
 }
-Person.instance='这是一个静态方法的属性';
+Person.instance='这是一个静态的属性';
 
 
 var p=new  Person('张三');

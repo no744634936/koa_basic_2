@@ -8,10 +8,11 @@ class Db {
 
         //Db.instance 是一个静态的属性
         if(!Db.instance){
-
             Db.instance=new Db();
+        }else{
+            return Db.instance;
         }
-        return Db.instance;
+
     }
 
     constructor(){
@@ -44,3 +45,5 @@ var myDb4=Db.getInstance();
 myDb3.find();
 
 myDb4.find();
+
+console.log(myDb3===myDb4);  //true
