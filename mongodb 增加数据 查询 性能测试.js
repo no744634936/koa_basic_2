@@ -73,7 +73,7 @@ var dbName = 'learn_mongo'
 
 
 console.time('start1');
-MongoClient.connect(dbUrl,(err,client)=>{
+MongoClient.connect(dbUrl,{ useUnifiedTopology:true },(err,client)=>{
     if(err){
 
         console.log(err);
