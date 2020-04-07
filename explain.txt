@@ -1,0 +1,24 @@
+
+/*
+ http://aui.github.io/art-template/koa/
+
+ 1、
+
+ npm install --save art-template
+ npm install --save koa-art-template
+
+
+ 2、const render = require('koa-art-template');
+
+
+ 3、
+
+ render(app, {
+     root: path.join(__dirname, 'view'),   视图的位置
+     extname: '.html', 后缀名
+     debug: process.env.NODE_ENV !== 'production'  是否开启调试模式
+
+ });
+4、
+ await ctx.render('user');
+* */
