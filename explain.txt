@@ -30,4 +30,4 @@ var mysql = require('mysql');
 
 
 
-查看module里面的mysqlDB.js 文件。
+查看module里面的mysqlDB.js 文件。和app.js文件即可
