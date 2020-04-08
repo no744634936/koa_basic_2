@@ -1,24 +1,33 @@
 
-/*
- http://aui.github.io/art-template/koa/
-
- 1、
-
- npm install --save art-template
- npm install --save koa-art-template
+1,create database koacms
 
 
- 2、const render = require('koa-art-template');
+2,use koacms
 
 
- 3、
+3,
+create table user (
+    id int(11) AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    username varchar(255) NOT NULL,
+    password varchar(32) NOT NULL 
+);
 
- render(app, {
-     root: path.join(__dirname, 'view'),   视图的位置
-     extname: '.html', 后缀名
-     debug: process.env.NODE_ENV !== 'production'  是否开启调试模式
 
- });
-4、
- await ctx.render('user');
-* */
+
+4,
+insert into user values (1, 'Yamada', '1234');
+insert into user values (2, 'Yamada', 'hahah');
+insert into user values (3, 'test', 'test');
+
+
+5,安装mysql模块
+npm install mysql --save
+
+
+6,引入模块
+
+var mysql = require('mysql');
+
+
+
+查看module里面的mysqlDB.js 文件。
