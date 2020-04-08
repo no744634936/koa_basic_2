@@ -8,5 +8,11 @@ side_nav
 
 
 主要修改的就是这两个路由。
+
+http://localhost:3000/admin
+http://localhost:3000/admin/index
 http://localhost:3000/admin/user
 http://localhost:3000/admin/user/add
+
+
+一般来说先写路由，再写view。再写control，跟model。
