@@ -1,8 +1,3 @@
-/**
- * Created by Administrator on 2018/3/20 0020.
- */
-
-/*轮播图的增加修改删除*/
 
 
 var DB=require('../../module/db.js');
@@ -20,17 +15,20 @@ router.get('/',async (ctx)=>{
 
 router.post('/doLogin', async (ctx)=>{
 
-    //console.log(ctx.request.body);
     var username=ctx.request.body.username;
-
     var password=md5(ctx.request.body.password);
 
+    console.log(username);
+    console.log(password);
+    
     var result=await DB.find('admin',{"username":username,"password":password});
-
+    
     if(result.length>0){
-        //console.log(result);
+        //获取信息成功之后将用户信息写入session
+        ctx.session.userInfo=result[0];
         ctx.redirect(ctx.state.__ROOT__+'/admin');
     }else{
+        //跳出弹窗，点击ok后返回login页面
         ctx.body="<script>alert('登录失败');location.href='/admin/login'</script>";
     }
 

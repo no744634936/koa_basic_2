@@ -19,31 +19,39 @@ var login=require('./admin/login.js');
 //当用户输入一个包含admin的url的时候（）都会首先经过这个路由
 //让后通过await next(); 像下继续匹配路由
 router.use(async (ctx,next)=>{
-
     ctx.state.__ROOT__='http://'+ctx.header.host;
-
-    // console.log(ctx.session.userInfo);
-    // console.log(ctx.url);
-    
-    //如果有session继续向下匹配路由。
     if(ctx.session.userInfo){
-        //这个表示继续向下匹配路由，执行代码
         await next();
     }else{
-        //如果没有session不存在
-        //如果用户输入的url不是 localhost:3000/admin/login那么跳转到login页面
-        if(ctx.url!="/admin/login" || ctx.url!="/admin/login"){
-            ctx.redirect("/admin/login");
-        }else{
-            // 如果用户输入的url是 localhost:3000/admin/login.继续向下匹配路由。
+        if((ctx.url=="/admin/login")||(ctx.url=="/admin/login/doLogin")){
+            //注意这里是 admin下面的login 里的doLogin ctx.url=="/admin/login/doLogin"
             await next();
+        }else{
+            ctx.redirect("/admin/login");
         }
     }
     
 })
 
 
+//为什么这样写不行
+/*
 
+router.use(async (ctx,next)=>{
+    ctx.state.__ROOT__='http://'+ctx.header.host;
+    if(ctx.session.userInfo){
+        await next();
+    }else{
+        if((ctx.url!="/admin/login")||(ctx.url!="/admin/login/doLogin")){
+            ctx.redirect("/admin/login");
+        }else{
+            await next();
+        }
+    }
+    
+})
+
+*/
 
 
 //配置admin的子路由  层级路由

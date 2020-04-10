@@ -14,7 +14,7 @@ var Config=require('./config.js');
 
 class Db{
 
-    static getInstance(){   /*1������  ���ʵ����ʵ��������������*/
+    static getInstance(){
 
         if(!Db.instance){
             Db.instance=new Db();
@@ -24,15 +24,15 @@ class Db{
 
     constructor(){
 
-        this.dbClient=''; /*���� ��db����*/
-        this.connect();   /*ʵ������ʱ����������ݿ�*/
+        this.dbClient='';
+        this.connect();
 
     }
 
-    connect(){  /*�������ݿ�*/
+    connect(){
       let _that=this;
       return new Promise((resolve,reject)=>{
-          if(!_that.dbClient){         /*1��������ݿ������ӵ�����*/
+          if(!_that.dbClient){
               MongoClient.connect(Config.dbUrl,{ useUnifiedTopology: true },(err,client)=>{
 
                   if(err){
