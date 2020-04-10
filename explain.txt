@@ -1,18 +1,17 @@
-1,将veiws/admin里面的几个html文件分离，到public文件夹里面去
+功能1；页面访问权限的判断。
 
-head
-foot
-top_nav
-side_nav
+当用户登录以后没有logout就关闭了页面那么30分钟以内，可以免登录访问网站内容
 
-
-
-主要修改的就是这两个路由。
-
-http://localhost:3000/admin
-http://localhost:3000/admin/index
-http://localhost:3000/admin/user
-http://localhost:3000/admin/user/add
+首先当用户登录之后，将用户信息保存到session里面。
+当用户访问后台每一个页面的时候都看一下，session里面有没有保存用户信息。
+如果有就表示已登录，如果没有就表示没登录。
 
 
-一般来说先写路由，再写view。再写control，跟model。
+
+
+app.js 文件里面使用session
+addmin.js 文件里面判断是否有session
+
+
+
+
