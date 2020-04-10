@@ -1,8 +1,6 @@
-输入账号密码的登录功能。
+验证码
+
 
 login.html
-admin/admin.js
-admin/login.js
-
-
+login.js  看dologin　路由即可。
 

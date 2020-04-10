@@ -76,8 +76,12 @@
 
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="password" class="form-control" placeholder="验证吗" style="width:200px;float:left;" />
-														<img id="verify_img" src="{{__ROOT__}}/admin/login/code" title="看不清？点击刷新" onclick="javascript:this.src='{{__ROOT__}}/admin/login/code?mt='+Math.random()" />
+                                                            <input type="text" name="code" class="form-control" placeholder="验证吗" style="width:200px;float:left;" />
+                                                            
+                                                            <!-- 这个路径方法{{__ROOT__}}/admin/login/code  给img标签传来了一个-->
+                                                        <img id="verify_img" src="{{__ROOT__}}/admin/login/code" 
+                                                        title="看不清？点击刷新" 
+                                                        onclick="javascript:this.src='{{__ROOT__}}/admin/login/code?mt='+Math.random()" />
 														</span>
 													</label>
 
