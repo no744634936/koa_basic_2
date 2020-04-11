@@ -44,10 +44,7 @@ router.get('/',(ctx)=>{
     ctx.render('admin/index');
 });
 
-router.get("/logout",(ctx,next)=>{
-    ctx.session.userInfo=null;
-    ctx.redirect(ctx.state.__ROOT__+"/admin/login");
-})
+
 
 router.use('/user',user);
 router.use('/focus',focus);
