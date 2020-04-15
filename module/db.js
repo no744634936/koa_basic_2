@@ -99,7 +99,7 @@ class Db{
 
     getObjectId=(id)=>{
         //mongodb里面查询_id时，需要把字符串转换成object
-        return ObjectId(id); 
+        return new ObjectId(id); 
     }
 
 }
